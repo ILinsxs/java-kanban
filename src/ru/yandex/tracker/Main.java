@@ -1,37 +1,27 @@
-package ru.yandex.tracker.service;
+package ru.yandex.tracker;
 
 import ru.yandex.tracker.model.Epic;
 import ru.yandex.tracker.model.Status;
 import ru.yandex.tracker.model.Subtask;
 import ru.yandex.tracker.model.Task;
+import ru.yandex.tracker.service.TaskManager;
 
 public class Main {
     public static void main(String[] args) {
         TaskManager taskManager = new TaskManager();
 
-        Task task1 = new Task(taskManager.generateId(), "Задача 1", "Важное описание задачи 1",
-                Status.NEW);
-        Task task2 = new Task(taskManager.generateId(), "Задача 2", "Важное описание задачи 2",
-                Status.NEW);
-        taskManager.addTask(task1);
-        taskManager.addTask(task2);
+        Task task1 = taskManager.createTask("Задача 1", "Важное описание задачи 1");
+        Task task2 = taskManager.createTask("Задача 2", "Важное описание задачи 2");
 
-        Epic epic1 = new Epic(taskManager.generateId(), "Переезд", "Собрать вещи для переезда",
-                Status.NEW);
-        Epic epic2 = new Epic(taskManager.generateId(), "Сделать КТ", "Подготовить материалы к КТ",
-                Status.NEW);
-        taskManager.addEpic(epic1);
-        taskManager.addEpic(epic2);
+        Epic epic1 = taskManager.createEpic("Переезд", "Собрать вещи для переезда");
+        Epic epic2 = taskManager.createEpic("Сделать КТ", "Подготовить материалы к КТ");
 
-        Subtask subtask1 = new Subtask(taskManager.generateId(), "Собрать коробки",
-                "Упаковать одежду в контейнеры", Status.NEW, epic1.getId());
-        Subtask subtask2 = new Subtask(taskManager.generateId(), "Упаковать кошку",
-                "Эмоционально подготовить кошку к переезду", Status.NEW, epic1.getId());
-        Subtask subtask3 = new Subtask(taskManager.generateId(),
-                "Контрольная точка", "Постепенный сбор материалов к Контрольной точке", Status.NEW, epic2.getId());
-        taskManager.addSubtask(subtask1);
-        taskManager.addSubtask(subtask2);
-        taskManager.addSubtask(subtask3);
+        Subtask subtask1 = taskManager.createSubtask("Собрать коробки",
+                "Упаковать одежду в контейнеры", epic1.getId());
+        Subtask subtask2 = taskManager.createSubtask("Упаковать кошку",
+                "Эмоционально подготовить кошку к переезду", epic1.getId());
+        Subtask subtask3 = taskManager.createSubtask("Контрольная точка",
+                "Постепенный сбор материалов к Контрольной точке", epic2.getId());
 
         // Вывод всех задач, эпиков и подзадач
         System.out.println("Все Задачи:");
@@ -89,7 +79,7 @@ public class Main {
             System.out.println(task);
         }
 
-        System.out.println("Вывод всех Эпиков после удаления");
+        System.out.println("Вывод всех эпиков после удаления");
         for (Epic epic : taskManager.getAllEpics()) {
             System.out.println(epic);
         }
@@ -98,5 +88,25 @@ public class Main {
         for (Subtask subtask : taskManager.getAllSubtasks()) {
             System.out.println(subtask);
         }
+
+        // Удаление всех задач, эпиков и подзадач
+        System.out.println("Удаление всех элементов...");
+        taskManager.removeAllTasks();
+        taskManager.removeAllEpics();
+        taskManager.removeAllSubtasks();
+
+        // Вывод всех задач, эпиков и подзадач после удаления всех элементов
+        for (Task task : taskManager.getAllTasks()) {
+            System.out.println(task);
+        }
+
+        for (Epic epic : taskManager.getAllEpics()) {
+            System.out.println(epic);
+        }
+
+        for (Subtask subtask : taskManager.getAllSubtasks()) {
+            System.out.println(subtask);
+        }
+        System.out.println("Удаление всех задач, эпиков и подзадач прошло успешно!)");
     }
 }

@@ -1,4 +1,4 @@
-package ru.yandex.tracker.model;
+package ru.yandex.tracker.service;
 
 import ru.yandex.tracker.model.Epic;
 import ru.yandex.tracker.model.Subtask;
@@ -7,7 +7,6 @@ import ru.yandex.tracker.model.Task;
 import java.util.ArrayList;
 
 public interface TaskManagerInterface {
-    int generateId();
     void addTask(Task task);
 
     void addEpic(Epic epic);
@@ -26,7 +25,6 @@ public interface TaskManagerInterface {
 
     void updateSubtask(Subtask subtask);
 
-    // Методы для удаления задач
     void removeTaskById(int id);
 
     void removeEpicById(int id);
@@ -40,4 +38,11 @@ public interface TaskManagerInterface {
     ArrayList<Subtask> getAllSubtasks();
 
     ArrayList<Subtask> getSubtasksByEpicId(int epicId);
+
+    //Методы для удаления всех задач
+    void removeAllTasks();
+
+    void removeAllEpics();
+
+    void removeAllSubtasks();
 }
