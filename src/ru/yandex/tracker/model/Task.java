@@ -13,10 +13,9 @@ public class Task {
         this.status = status;
     }
 
-    // Будет удалено после проверки. СМ TaskManager 50, 51
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

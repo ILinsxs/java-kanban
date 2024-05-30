@@ -24,42 +24,23 @@ public class TaskManager implements TaskManagerInterface {
         return idCounter++;
     }
 
-    // Методы для создания Task, Epic, Subtask
-    public Task createTask(String title, String description) {
-        Task task = new Task(generateId(), title, description, Status.NEW);
-        addTask(task);
-        return task;
-    }
-
-    public Epic createEpic(String title, String description) {
-        Epic epic = new Epic(generateId(), title, description);
-        addEpic(epic);
-        return epic;
-    }
-
-    public Subtask createSubtask(String title, String description, int epicId) {
-        Subtask subtask = new Subtask(generateId(), title, description, Status.NEW, epicId);
-        addSubtask(subtask);
-        return subtask;
-    }
-
     // Добавление задач в HashMap, используя ID задачи в качестве ключа
     @Override
     public void addTask(Task task) {
-        // Будет удалено после проверки
-        // Генерация ID происходит в этих методах, прописав её отдельно в методах add получим чётные значения
-//        task.setId(generateId());
+        task.setId(generateId());
         tasks.put(task.getId(), task);
     }
 
     @Override
     public void addEpic(Epic epic) {
+        epic.setId(generateId());
         epics.put(epic.getId(), epic);
     }
 
     // При добавлении подзадачи, мы также добавляем её ID в соответствующий Epic
     @Override
     public void addSubtask(Subtask subtask) {
+        subtask.setId(generateId());
         subtasks.put(subtask.getId(), subtask);
         Epic epic = epics.get(subtask.getEpicId());
         if (epic != null) {
