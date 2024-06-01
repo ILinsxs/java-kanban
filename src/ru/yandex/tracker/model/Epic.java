@@ -3,11 +3,16 @@ package ru.yandex.tracker.model;
 import java.util.ArrayList;
 
 public class Epic extends Task {
-    private ArrayList<Integer> subtaskIds; // Хранит ID всех подзадач, связанных с Epic
+    private final ArrayList<Integer> subtaskIds; // Хранит ID всех подзадач, связанных с Epic
 
     public Epic(int id, String title, String description) {
         super(id, title, description, Status.NEW);
         this.subtaskIds = new ArrayList<>();
+    }
+
+    public Epic(Epic epic) {
+        super(epic);
+        this.subtaskIds = new ArrayList<>(epic.subtaskIds);
     }
 
     public ArrayList<Integer> getSubtaskIds() {

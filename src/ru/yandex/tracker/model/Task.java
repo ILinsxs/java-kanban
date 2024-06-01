@@ -13,6 +13,13 @@ public class Task {
         this.status = status;
     }
 
+    public Task(Task task) {
+        this.id = task.id;
+        this.title = task.title;
+        this.description = task.description;
+        this.status = task.status;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -25,8 +32,16 @@ public class Task {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Status getStatus() {
@@ -48,7 +63,7 @@ public class Task {
 
     @Override
     public int hashCode() {
-        return Integer.hashCode(id);
+        return id;
     }
 
     @Override
