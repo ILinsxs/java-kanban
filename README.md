@@ -1,2 +1,2 @@
 # java-kanban
-Repository for homework project.
+Случайно нажал кнопку проверить(отправить проект). Отправлю через пару часов
