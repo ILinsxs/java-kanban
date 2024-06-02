@@ -7,15 +7,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
-    private HistoryManager historyManager;
+    private final HistoryManager historyManager;
     private final HashMap<Integer, Task> tasks;
     private final HashMap<Integer, Epic> epics;
     private final HashMap<Integer, Subtask> subtasks;
     private int idCounter; // Поле-счётчик для генерации уникальных ID
 
-    // Исправить не получилось, можно исправлю к следующему спринту. Подумаю как
-    public InMemoryTaskManager(HistoryManager historyManager) {
-        this.historyManager = historyManager;
+    // Изменил
+    public InMemoryTaskManager() {
+        this.historyManager = Managers.getDefaultHistory();
         this.tasks = new HashMap<>();
         this.epics = new HashMap<>();
         this.subtasks = new HashMap<>();

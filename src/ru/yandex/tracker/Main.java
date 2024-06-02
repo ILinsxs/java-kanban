@@ -24,7 +24,6 @@ public class Main {
         // Обновление статусов задач и подзадач
         task1.setStatus(Status.IN_PROGRESS);
         taskManager.updateTask(task1);
-        taskManager.updateTask(task1);
 
         subtask1.setStatus(Status.IN_PROGRESS);
         taskManager.updateSubtask(subtask1);
