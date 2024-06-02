@@ -24,6 +24,7 @@ public class Main {
         // Обновление статусов задач и подзадач
         task1.setStatus(Status.IN_PROGRESS);
         taskManager.updateTask(task1);
+        taskManager.updateTask(task1);
 
         subtask1.setStatus(Status.IN_PROGRESS);
         taskManager.updateSubtask(subtask1);
@@ -46,7 +47,7 @@ public class Main {
         removeAllItem(taskManager);
 
         // Вывод истории просмотров
-        System.out.println("История просмотров: (всего " + taskManager.getHistorySize() + " задач)");
+        System.out.println("История просмотров задач: ");
         for (Task task : taskManager.getHistory()) {
             System.out.println(task);
         }

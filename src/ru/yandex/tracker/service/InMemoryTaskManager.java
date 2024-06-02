@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
-    private final HistoryManager historyManager;
-    final HashMap<Integer, Task> tasks;
-    final HashMap<Integer, Epic> epics;
-    final HashMap<Integer, Subtask> subtasks;
+    private HistoryManager historyManager;
+    private final HashMap<Integer, Task> tasks;
+    private final HashMap<Integer, Epic> epics;
+    private final HashMap<Integer, Subtask> subtasks;
     private int idCounter; // Поле-счётчик для генерации уникальных ID
 
+    // Исправить не получилось, можно исправлю к следующему спринту. Подумаю как
     public InMemoryTaskManager(HistoryManager historyManager) {
         this.historyManager = historyManager;
         this.tasks = new HashMap<>();
@@ -36,10 +37,10 @@ public class InMemoryTaskManager implements TaskManager {
         return new ArrayList<>(tasks.values());
     }
 
-    @Override
-    public int getHistorySize() {
-        return historyManager.getHistorySize();
-    }
+//    @Override
+//    public int getHistorySize() {
+//        return historyManager.getHistorySize();
+//    }
 
     @Override
     public Task getTask(int id) {

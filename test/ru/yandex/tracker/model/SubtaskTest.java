@@ -8,7 +8,7 @@ import ru.yandex.tracker.service.TaskManager;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SubtaskTest {
-    TaskManager taskManager = Managers.getDefault();
+    private TaskManager taskManager = Managers.getDefault();
 
     // Проверяет, что два объекта класса Subtask равны друг другу, если у них одинаковый id
     @Test

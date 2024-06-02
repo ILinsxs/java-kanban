@@ -3,6 +3,11 @@ package ru.yandex.tracker.model;
 public class Subtask extends Task {
     private final int epicId; // ID Epic, к которому относится подзадача
 
+    @Override
+    public Subtask copy() {
+        return new Subtask(this);
+    }
+
     public Subtask(int id, String title, String description, Status status, int epicId) {
         super(id, title, description, status);
         this.epicId = epicId;

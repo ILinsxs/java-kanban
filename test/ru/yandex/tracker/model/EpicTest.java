@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EpicTest {
-    TaskManager taskManager = Managers.getDefault();
+    private TaskManager taskManager = Managers.getDefault();
 
     // Проверяет, что два объекта класса Epic равны друг другу, если у них одинаковый id
     @Test

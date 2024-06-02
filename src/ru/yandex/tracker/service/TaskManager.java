@@ -10,8 +10,6 @@ import java.util.List;
 public interface TaskManager {
     List<Task> getAll();
 
-    int getHistorySize();
-
     // История просмотра
     Task getTask(int id);
 
