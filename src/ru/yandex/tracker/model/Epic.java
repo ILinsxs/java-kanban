@@ -6,11 +6,6 @@ import java.util.List;
 public class Epic extends Task {
     private final List<Integer> subtaskIds; // Хранит ID всех подзадач, связанных с Epic
 
-    @Override
-    public Epic copy() {
-        return new Epic(this);
-    }
-
     public Epic(int id, String title, String description) {
         super(id, title, description, Status.NEW);
         this.subtaskIds = new ArrayList<>();

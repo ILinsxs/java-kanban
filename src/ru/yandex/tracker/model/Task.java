@@ -6,9 +6,6 @@ public class Task {
     private String description;
     private Status status;
 
-    public Task copy() {
-        return new Task(this);
-    }
     public Task(int id, String title, String description, Status status) {
         this.id = id;
         this.title = title;
